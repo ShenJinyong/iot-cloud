@@ -1,9 +1,11 @@
 package com.iot.cloud.controller;
 
+import com.iot.cloud.common.ApiResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @ClassName TestController
@@ -19,8 +21,8 @@ public class TestController {
 
     @GetMapping("/hello")
     @ApiOperation(value = "简单的问候", notes = "返回一个简单的问候消息")
-    public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("Hello from IoT Device Service!");
+    public ApiResponse<String> sayHello() {
+        return ApiResponse.success("Hello from IoT Device Service!");
     }
 
 }
