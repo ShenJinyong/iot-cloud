@@ -1,10 +1,12 @@
 package com.iot.cloud.controller;
 
 import com.iot.cloud.common.ApiResponse;
+import com.iot.cloud.enums.ApiCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,9 +22,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/hello")
-    @ApiOperation(value = "简单的问候", notes = "返回一个简单的问候消息")
+    @ApiOperation(value = "简单的问候", notes = "返回问候消息")
     public ApiResponse<String> sayHello() {
         return ApiResponse.success("Hello from IoT Device Service!");
+    }
+
+    @GetMapping("/error")
+    @ApiOperation(value = "请求参数测试", notes = "返回异常")
+    public ApiResponse<Integer> getError(@RequestParam int number) {
+        int i = 1 / 0;
+        return ApiResponse.success(number);
+    }
+
+    @GetMapping("/custom-error")
+    @ApiOperation(value = "业务异常测试", notes = "返回业务异常")
+    public ApiResponse<String> getCustomError() {
+        return ApiResponse.error(999, "业务异常");
     }
 
 }
