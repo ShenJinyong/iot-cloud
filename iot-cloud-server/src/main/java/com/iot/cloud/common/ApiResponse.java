@@ -4,7 +4,7 @@ import com.iot.cloud.enums.ApiCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @Email 438217638@qq.com
  * @Date 2025/2/22 21:28
  */
-@Data
+@Getter
 @Accessors(chain = true)
 @Builder
 @ApiModel("统一的返回类")
