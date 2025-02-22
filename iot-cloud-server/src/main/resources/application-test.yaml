@@ -1,0 +1,6 @@
+# 测试环境
+# application-dev。yaml
+# 服务
+server:
+  # 端口
+  port: 9002
