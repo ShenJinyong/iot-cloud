@@ -1,7 +1,6 @@
 package com.iot.cloud.controller;
 
 import com.iot.cloud.common.ApiResponse;
-import com.iot.cloud.enums.ApiCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
