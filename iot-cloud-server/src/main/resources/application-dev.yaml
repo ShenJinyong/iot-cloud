@@ -4,3 +4,22 @@
 server:
   # 端口
   port: 9001
+
+spring:
+  # 数据源
+  datasource:
+    # 连接地址
+    url: jdbc:sqlserver://127.0.0.1:1433;databaseName=iot_cloud;trustServerCertificate=true
+    # 用户名
+    username: sa
+    # 密码
+    password: 1qaz2wsx
+    # 数据库驱动
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# mybatis-plus
+mybatis-plus:
+  # 配置文件
+  configuration:
+    # 控制台SQL日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
