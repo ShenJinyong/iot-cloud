@@ -1,5 +1,6 @@
 package com.iot.cloud.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.iot.cloud.common.ApiResponse;
 import com.iot.cloud.pojo.po.UserPO;
 import com.iot.cloud.service.impl.UserServiceImpl;
@@ -31,6 +32,14 @@ public class UserController {
         return ApiResponse.success(userService.list());
     }
 
+
+    @GetMapping("/page")
+    @ApiOperation(value = "用户列表-分页")
+    public ApiResponse<Page<UserPO>> page(@RequestParam (defaultValue = "1")long current,@RequestParam(defaultValue = "5") long limit) {
+        Page<UserPO> userPOPage = userService.page(current,limit);
+        return ApiResponse.success(userPOPage);
+    }
+
     @PostMapping("/add")
     @ApiOperation(value = "添加用户")
     public ApiResponse<UserPO> add(@RequestBody UserPO userPO) {
@@ -38,7 +47,7 @@ public class UserController {
         return ApiResponse.success(userPO);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     @ApiOperation(value = "更新用户")
     public ApiResponse<UserPO> update(@RequestBody UserPO userPO) {
         userService.updateById(userPO);
