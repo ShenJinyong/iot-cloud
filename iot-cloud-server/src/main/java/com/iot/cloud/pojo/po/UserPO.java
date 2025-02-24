@@ -23,7 +23,7 @@ import java.util.Date;
 @TableName("sys_user")
 public class UserPO {
 
-    @TableId(value = "user_id")
+    @TableId(value = "user_id",type = IdType.AUTO)
     @ApiModelProperty("用户ID")
     private Long userId;
 
