@@ -33,29 +33,29 @@ public class GlobalExceptionHandler {
     // 400 缺少请求参数
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    private ApiResponse<String> missingServletRequestParameter(MissingServletRequestParameterException exception) {
-        return ApiResponse.success(ApiCode.BAD_REQUEST.getMessage());
+    private ApiResponse<String> missingServletRequestParameter(Exception exception) {
+        return ApiResponse.error(ApiCode.BAD_REQUEST);
     }
 
     // 400 请求参数格式有误
     @ExceptionHandler({MethodArgumentTypeMismatchException.class, HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     private ApiResponse<String> typeMismatch(Exception exception) {
-        return ApiResponse.success(ApiCode.BAD_REQUEST.getMessage());
+        return ApiResponse.error(ApiCode.BAD_REQUEST);
     }
 
     // 404 资源未找到
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiResponse<String> handlerNoFoundException(NoHandlerFoundException exception) {
-        return ApiResponse.success(ApiCode.NOT_FOUND.getMessage());
+    public ApiResponse<String> handlerNoFoundException(Exception exception) {
+        return ApiResponse.error(ApiCode.NOT_FOUND);
     }
 
     // 405 请求的HTTP方法不支持
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    private ApiResponse<String> httpRequestMethodNotSupported(HttpRequestMethodNotSupportedException exception) {
-        return ApiResponse.success(ApiCode.METHOD_NOT_ALLOWED.getMessage());
+    private ApiResponse<String> httpRequestMethodNotSupported(Exception exception) {
+        return ApiResponse.error(ApiCode.METHOD_NOT_ALLOWED);
     }
 
     // 处理自定义异常
